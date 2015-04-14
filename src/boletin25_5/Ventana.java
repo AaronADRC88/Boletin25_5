@@ -30,7 +30,7 @@ public class Ventana implements ActionListener {
         marco.add(panel);
         marco.setVisible(true);
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        marco.setSize(400, 300);
+        marco.setSize(800, 600);
         marco.setLocationRelativeTo(null);
     }
         /**public void paintComponent(Graphics g){
@@ -40,16 +40,16 @@ public class Ventana implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (boton == e.getSource()) {
-         int x=100,y=100;
+         int x=(int)(Math.random()*700),y=(int)(Math.random()*600);
          int numCirculos=Integer.parseInt(text.getText());
             System.out.println("circ"+numCirculos);
             Graphics g=panel.getGraphics();
             for (int i = 0; i <numCirculos; i++) {
                 g.setColor(Color.red);
                 //g.drawOval(x+50, y+50, 80, 80);//circulo
-                g.fillOval(x+50, y+50, 80, 80);//redondo
-                x+=50;
-                y+=50;
+                g.fillOval((int)(Math.random()*700),(int)(Math.random()*600), 80, 80);//redondo
+                //x+=50;
+                //y+=50;
             }
         }
         if (boton1 == e.getSource()) {
