@@ -1,5 +1,7 @@
 package boletin25_5;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -16,12 +18,14 @@ public class Ventana implements ActionListener {
         panel = new JPanel();
         boton = new JButton("Debuxar");
         boton1 = new JButton("limpar");
-        text = new JTextField(0);
+        text = new JTextField(20);
         //panel.setLayout(null);
         panel.add(boton);
         panel.add(boton1);
         panel.add(text);
         boton.addActionListener(this);
+        boton1.addActionListener(this);
+        text.setText("0");
 
         marco.add(panel);
         marco.setVisible(true);
@@ -29,11 +33,27 @@ public class Ventana implements ActionListener {
         marco.setSize(400, 300);
         marco.setLocationRelativeTo(null);
     }
-
+        /**public void paintComponent(Graphics g){
+            g.setColor(Color.red);
+            g.fillOval(0, 0, 10, 10);
+        }**/
     @Override
     public void actionPerformed(ActionEvent e) {
         if (boton == e.getSource()) {
-            text.setText("Premiches");
+         int x=100,y=100;
+         int numCirculos=Integer.parseInt(text.getText());
+            System.out.println("circ"+numCirculos);
+            Graphics g=panel.getGraphics();
+            for (int i = 0; i <numCirculos; i++) {
+                g.setColor(Color.red);
+                //g.drawOval(x+50, y+50, 80, 80);//circulo
+                g.fillOval(x+50, y+50, 80, 80);//redondo
+                x+=50;
+                y+=50;
+            }
+        }
+        if (boton1 == e.getSource()) {
+            panel.repaint();
         }
     }
 
